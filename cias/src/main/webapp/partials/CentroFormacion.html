@@ -1,37 +1,37 @@
 <div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo CentroFormacion</button>
-	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar CentroFormacion</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo CentroFormacion</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar CentroFormacion</button>
 </div>
-				
+
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de CentroFormacion</div>
     <div class="panel-body">
         <table class="resultados table table-striped">
             <tr>
-                				<th>
-                                    numeroResolucion
-                                </th>				<th>
-                                    fechaResolucion
-                                </th>
-								<th>
-				                    empresa
-				                </th>				<th>
-				                    entidadAutorizadora
-				                </th>
-				<th>
+                <th>
+                    numeroResolucion
+                </th>				<th>
+                    fechaResolucion
+                </th>
+                <th>
+                    empresa
+                </th>				<th>
+                    entidadAutorizadora
+                </th>
+                <th>
                     &nbsp;
                 </th>
             </tr>
             <tr ng-repeat="row in lista">
-                		<td class="row">{{row.numeroResolucion}}</td>
-                		<td class="row">{{row.fechaResolucion| date: 'dd/MM/yyyy'}}</td>
-                
-					<td class="row">{{row.entidadAutorizadora.nombre}}</td>              	<td class="row">{{row.empresa.nombre}}</td>              
-				<td class="row">
+                <td class="row">{{row.numeroResolucion}}</td>
+                <td class="row">{{row.fechaResolucion| date: 'dd/MM/yyyy'}}</td>
+
+                <td class="row">{{row.entidadAutorizadora.nombre}}</td>              	<td class="row">{{row.empresa.nombre}}</td>              
+                <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
                     </button>
-					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
                         <span class="glyphicon glyphicon-remove"></span>Eliminar
                     </button>
                 </td>
@@ -45,55 +45,55 @@
     <div class="panel-heading">Parametrizaci&oacute;n de CentroFormacion</div>
     <div class="panel-body">
         <form role="form" id="formularioEditar">
-            				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-                                    <label for="numeroResolucion">numeroResolucion</label>
-                                    <input id="numeroResolucion" 
-                                           class="form-control" 
-            							   type="text"
-                                           ng-model="datosFormulario.numeroResolucion"
-            							   placeholder="numeroResolucion"/>
-                                    <div ng-show="errores.numeroResolucion">{{errores.numeroResolucion}}</div>
-                                </div>
-                            </div>				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-                                    <label for="fechaResolucion">fechaResolucion</label>
-            						<div class="input-group">
-            	                        <input id="fechaResolucion" 
-            	                               class="form-control datepicker" 
-            	                               type="text" 
-            	                               ng-model="datosFormulario.fechaResolucion"/>
-            							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                	</div>
-                                    <script>
-                                                var dp_fechaResolucion = $('#fechaResolucion').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
-                                                    dp_fechaResolucion.hide();
-                                                }).data('datepicker');
-                                    </script>
-                                    <div ng-show="errores.fechaResolucion">{{errores.fechaResolucion}}</div>
-                                </div>
-                            </div> 
-							<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>empresa</label>
-									<select id="empresa" class="form-control" 
-			                            ng-model="datosFormulario.empresa"
-			                            ng-options="option.nombre for option in listaEmpresa track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.empresa">{{errores.empresa}}</div>
-			                    </div>
-			                </div>				<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>entidadAutorizadora</label>
-									<select id="entidadAutorizadora" class="form-control" 
-			                            ng-model="datosFormulario.entidadAutorizadora"
-			                            ng-options="option.nombre for option in listaEntidadAutorizadora track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.entidadAutorizadora">{{errores.entidadAutorizadora}}</div>
-			                    </div>
-			                </div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label for="numeroResolucion">numeroResolucion</label>
+                    <input id="numeroResolucion" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.numeroResolucion"
+                           placeholder="numeroResolucion"/>
+                    <div ng-show="errores.numeroResolucion">{{errores.numeroResolucion}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label for="fechaResolucion">fechaResolucion</label>
+                    <div class="input-group">
+                        <input id="fechaResolucion" 
+                               class="form-control datepicker" 
+                               type="text" 
+                               ng-model="datosFormulario.fechaResolucion"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <script>
+                                var dp_fechaResolucion = $('#fechaResolucion').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
+                                    dp_fechaResolucion.hide();
+                                }).data('datepicker');
+                    </script>
+                    <div ng-show="errores.fechaResolucion">{{errores.fechaResolucion}}</div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>empresa</label>
+                    <select id="empresa" class="form-control" 
+                            ng-model="datosFormulario.empresa"
+                            ng-options="option.nombre for option in listaEmpresa track by option.id">
+                    </select>
+                    <div ng-show="errores.empresa">{{errores.empresa}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>entidadAutorizadora</label>
+                    <select id="entidadAutorizadora" class="form-control" 
+                            ng-model="datosFormulario.entidadAutorizadora"
+                            ng-options="option.nombre for option in listaEntidadAutorizadora track by option.id">
+                    </select>
+                    <div ng-show="errores.entidadAutorizadora">{{errores.entidadAutorizadora}}</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
                 <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>

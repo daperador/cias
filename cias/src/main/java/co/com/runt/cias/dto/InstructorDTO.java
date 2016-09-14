@@ -49,11 +49,7 @@ public class InstructorDTO {
     	this.vinculacion=vinculacion;
     }
      */
-    /**
-     * @generated
-     */
-    private EmpresaDTO empresa;
-
+    
     /**
      * @generated
      */
@@ -70,20 +66,7 @@ public class InstructorDTO {
     	this.certificacion=certificacion;
     }
      */
-    /**
-     * @generated
-     */
-    public EmpresaDTO getEmpresa() {
-        return this.empresa;
-    }
-
-    /**
-     * @generated
-     */
-    public void setEmpresa(EmpresaDTO empresa) {
-        this.empresa = empresa;
-    }
-
+    
     /**
      * @generated
      */

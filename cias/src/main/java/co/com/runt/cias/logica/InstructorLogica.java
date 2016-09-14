@@ -24,6 +24,15 @@ public class InstructorLogica {
     public List<InstructorDTO> obtenerTodos() {
         return convertirEntidad(persistencia.obtenerTodos());
     }
+    
+    /**
+     * Obtiene la lista de instructores por CIA
+     * @param idCia identificador del cia
+     * @return lista de instructores que tiene el CIA
+     */
+    public List<InstructorDTO> obtenerPorCIA(Long idCia) {
+        return convertirEntidad(persistencia.obtenerPorCIA(idCia));
+    }
 
     /**
      * @generated
@@ -67,10 +76,6 @@ public class InstructorLogica {
             entidad.setPersonaNatural(new PersonaNatural());
             entidad.getPersonaNatural().setId(dto.getPersonaNatural().getId());
         }
-        if (dto.getEmpresa() != null) {
-            entidad.setEmpresa(new Empresa());
-            entidad.getEmpresa().setId(dto.getEmpresa().getId());
-        }
 
         return entidad;
     }
@@ -97,11 +102,6 @@ public class InstructorLogica {
             dto.setPersonaNatural(
                     new PersonaNaturalDTO(
                             entidad.getPersonaNatural().getId()));
-        }
-        if (entidad.getEmpresa() != null) {
-            dto.setEmpresa(
-                    new EmpresaDTO(
-                            entidad.getEmpresa().getId()));
         }
 
         return dto;

@@ -52,7 +52,7 @@ public class PersonaNatural {
      * @generated 0-1-false
      */
     @ManyToOne(cascade = {}, fetch = FetchType.EAGER)
-    @JoinColumn(name = "PERSNATUR_PERSONA_IDPERSONA", updatable = false)
+    @JoinColumn(name = "PERSNATUR_PERSONA_IDPERSONA", updatable = false, insertable = false)
     private Persona persona;
 
     /**

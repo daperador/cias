@@ -8,14 +8,15 @@ import javax.persistence.*;
  * @generated
  */
 @Entity
-@Table(name = "CI_Instructor")//, schema="${schema}")
+@Table(name = "CI_INSTRUCTOR")//, schema="${schema}")
 @NamedQueries({
-    @NamedQuery(name = "Instructor.obtenerTodos", query = "select e from Instructor e")
+    @NamedQuery(name = "Instructor.obtenerTodos", query = "select e from Instructor e"),
+    @NamedQuery(name = "Instructor.obtenerPorCIA", query = "select e from Instructor e where e.empresa.id=:cia")
 })
 public class Instructor {
 
     @Id
-    //@Column(name = "Instructor_id")
+    @Column(name = "INSTRUCTOR_ID")
     @GeneratedValue(generator = "InstructorGen", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "InstructorGen", sequenceName = "Instructor_SEQ", allocationSize = 1)
     private Long id;
@@ -32,13 +33,8 @@ public class Instructor {
      * @generated 0-1-false
      */
     @ManyToOne(cascade = {}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "INSTRUCTOR_PERSNATUR")
     private PersonaNatural personaNatural;
-
-    /**
-     * @generated 0-1-false
-     */
-    @ManyToOne(cascade = {}, fetch = FetchType.EAGER)
-    private Empresa empresa;
 
     /**
      * @generated 0--1-true
@@ -50,19 +46,6 @@ public class Instructor {
      */
     //@OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
     //private List<Certificacion> certificacion;
-    /**
-     * @generated
-     */
-    public Empresa getEmpresa() {
-        return this.empresa;
-    }
-
-    /**
-     * @generated
-     */
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
 
     /*public List<Vinculacion> getVinculacion(){
 		if(vinculacion!=null){

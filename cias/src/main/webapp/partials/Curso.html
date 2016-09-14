@@ -1,40 +1,40 @@
 <div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Curso</button>
-	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar Curso</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Curso</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Curso</button>
 </div>
-				
+
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de Curso</div>
     <div class="panel-body">
         <table class="resultados table table-striped">
             <tr>
-                				<th>
-                                    fecha
-                                </th>				<th>
-                                    horaInicio
-                                </th>				<th>
-                                    horaFin
-                                </th>
-								<th>
-				                    instructor
-				                </th>				<th>
-				                    sala
-				                </th>
-				<th>
+                <th>
+                    fecha
+                </th>				<th>
+                    horaInicio
+                </th>				<th>
+                    horaFin
+                </th>
+                <th>
+                    instructor
+                </th>				<th>
+                    sala
+                </th>
+                <th>
                     &nbsp;
                 </th>
             </tr>
             <tr ng-repeat="row in lista">
-                		<td class="row">{{row.fecha| date: 'dd/MM/yyyy'}}</td>
-                		<td class="row">{{row.horaInicio}}</td>
-                		<td class="row">{{row.horaFin}}</td>
-                
-					<td class="row">{{row.instructor.nombre}}</td>              	<td class="row">{{row.sala.nombre}}</td>              
-				<td class="row">
+                <td class="row">{{row.fecha| date: 'dd/MM/yyyy'}}</td>
+                <td class="row">{{row.horaInicio}}</td>
+                <td class="row">{{row.horaFin}}</td>
+
+                <td class="row">{{row.instructor.nombre}}</td>              	<td class="row">{{row.sala.nombre}}</td>              
+                <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
                     </button>
-					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
                         <span class="glyphicon glyphicon-remove"></span>Eliminar
                     </button>
                 </td>
@@ -48,65 +48,65 @@
     <div class="panel-heading">Parametrizaci&oacute;n de Curso</div>
     <div class="panel-body">
         <form role="form" id="formularioEditar">
-            				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-                                    <label for="fecha">fecha</label>
-            						<div class="input-group">
-            	                        <input id="fecha" 
-            	                               class="form-control datepicker" 
-            	                               type="text" 
-            	                               ng-model="datosFormulario.fecha"/>
-            							<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                                	</div>
-                                    <script>
-                                                var dp_fecha = $('#fecha').datepicker({format: 'dd/mm/yyyy'}).on('changeDate', function (ev) {
-                                                    dp_fecha.hide();
-                                                }).data('datepicker');
-                                    </script>
-                                    <div ng-show="errores.fecha">{{errores.fecha}}</div>
-                                </div>
-                            </div>				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-                                    <label for="horaInicio">horaInicio</label>
-                                    <input id="horaInicio" 
-                                           class="form-control" 
-            							   type="text"
-                                           ng-model="datosFormulario.horaInicio"
-            							   placeholder="horaInicio"/>
-                                    <div ng-show="errores.horaInicio">{{errores.horaInicio}}</div>
-                                </div>
-                            </div>				<div class="row">
-                                <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-                                    <label for="horaFin">horaFin</label>
-                                    <input id="horaFin" 
-                                           class="form-control" 
-            							   type="text"
-                                           ng-model="datosFormulario.horaFin"
-            							   placeholder="horaFin"/>
-                                    <div ng-show="errores.horaFin">{{errores.horaFin}}</div>
-                                </div>
-                            </div> 
-							<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>instructor</label>
-									<select id="instructor" class="form-control" 
-			                            ng-model="datosFormulario.instructor"
-			                            ng-options="option.nombre for option in listaInstructor track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.instructor">{{errores.instructor}}</div>
-			                    </div>
-			                </div>				<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>sala</label>
-									<select id="sala" class="form-control" 
-			                            ng-model="datosFormulario.sala"
-			                            ng-options="option.nombre for option in listaSala track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.sala">{{errores.sala}}</div>
-			                    </div>
-			                </div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label for="fecha">fecha</label>
+                    <div class="input-group">
+                        <input id="fecha" 
+                               class="form-control datepicker" 
+                               type="text" 
+                               ng-model="datosFormulario.fecha"/>
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                    </div>
+                    <script>
+                                var dp_fecha = $('#fecha').datepicker({format: 'dd/mm/yyyy',language: 'es'}).on('changeDate', function (ev) {
+                                    dp_fecha.hide();
+                                }).data('datepicker');
+                    </script>
+                    <div ng-show="errores.fecha">{{errores.fecha}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label for="horaInicio">horaInicio</label>
+                    <input id="horaInicio" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.horaInicio"
+                           placeholder="horaInicio"/>
+                    <div ng-show="errores.horaInicio">{{errores.horaInicio}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label for="horaFin">horaFin</label>
+                    <input id="horaFin" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="datosFormulario.horaFin"
+                           placeholder="horaFin"/>
+                    <div ng-show="errores.horaFin">{{errores.horaFin}}</div>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>instructor</label>
+                    <select id="instructor" class="form-control" 
+                            ng-model="datosFormulario.instructor"
+                            ng-options="option.nombre for option in listaInstructor track by option.id">
+                    </select>
+                    <div ng-show="errores.instructor">{{errores.instructor}}</div>
+                </div>
+            </div>				<div class="row">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>sala</label>
+                    <select id="sala" class="form-control" 
+                            ng-model="datosFormulario.sala"
+                            ng-options="option.nombre for option in listaSala track by option.id">
+                    </select>
+                    <div ng-show="errores.sala">{{errores.sala}}</div>
+                </div>
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
                 <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
                 <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
             </div>

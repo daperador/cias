@@ -19,20 +19,20 @@ public class ApplicationConfig extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(SalaServicio.class);
-        resources.add(TipoCertificacionServicio.class);
-        resources.add(PersonaServicio.class);
-        resources.add(EntidadAutorizadoraServicio.class);
-        resources.add(PersonaNaturalServicio.class);
-        resources.add(TipoDocumentoServicio.class);
-        resources.add(CentroFormacionServicio.class);
-        resources.add(CursoServicio.class);
-        resources.add(MunicipioServicio.class);
-        resources.add(DepartamentoServicio.class);
-        resources.add(InstructorServicio.class);
-        resources.add(EmpresaServicio.class);
-        resources.add(CertificacionServicio.class);
-        resources.add(VinculacionServicio.class);
+        resources.add(co.com.runt.cias.servicio.CentroFormacionServicio.class);
+        resources.add(co.com.runt.cias.servicio.CertificacionServicio.class);
+        resources.add(co.com.runt.cias.servicio.CursoServicio.class);
+        resources.add(co.com.runt.cias.servicio.DepartamentoServicio.class);
+        resources.add(co.com.runt.cias.servicio.EmpresaServicio.class);
+        resources.add(co.com.runt.cias.servicio.EntidadAutorizadoraServicio.class);
+        resources.add(co.com.runt.cias.servicio.InstructorServicio.class);
+        resources.add(co.com.runt.cias.servicio.MunicipioServicio.class);
+        resources.add(co.com.runt.cias.servicio.PersonaNaturalServicio.class);
+        resources.add(co.com.runt.cias.servicio.PersonaServicio.class);
+        resources.add(co.com.runt.cias.servicio.SalaServicio.class);
+        resources.add(co.com.runt.cias.servicio.TipoCertificacionServicio.class);
+        resources.add(co.com.runt.cias.servicio.TipoDocumentoServicio.class);
+        resources.add(co.com.runt.cias.servicio.VinculacionServicio.class);
     }
 
 }

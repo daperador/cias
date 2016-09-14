@@ -1,31 +1,31 @@
 <div class="btn-group">
-	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Instructor</button>
-	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar Instructor</button>
+    <button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Instructor</button>
+    <button type="button" class="btn btn-default" ng-click="cancelar()">Listar Instructor</button>
 </div>
-				
+
 <div class="panel panel-primary" ng-hide="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de Instructor</div>
     <div class="panel-body">
         <table class="resultados table table-striped">
             <tr>
-                
-								<th>
-				                    personaNatural
-				                </th>				<th>
-				                    empresa
-				                </th>
-				<th>
+
+                <th>
+                    personaNatural
+                </th>				<th>
+                    empresa
+                </th>
+                <th>
                     &nbsp;
                 </th>
             </tr>
             <tr ng-repeat="row in lista">
-                
-					<td class="row">{{row.personaNatural.nombre}}</td>              	<td class="row">{{row.empresa.nombre}}</td>              
-				<td class="row">
+
+                <td class="row">{{row.personaNatural.nombre}}</td>              	<td class="row">{{row.empresa.nombre}}</td>              
+                <td class="row">
                     <button type="button" class="btn btn-default" ng-click="editar(row)">
                         <span class="glyphicon glyphicon-pencil"></span>Editar
                     </button>
-					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                    <button type="button" class="btn btn-default" ng-click="eliminar(row)">
                         <span class="glyphicon glyphicon-remove"></span>Eliminar
                     </button>
                 </td>
@@ -38,33 +38,160 @@
 <div class="panel panel-primary" ng-show="panelEditar">
     <div class="panel-heading">Parametrizaci&oacute;n de Instructor</div>
     <div class="panel-body">
-        <form role="form" id="formularioEditar">
-             
-							<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>personaNatural</label>
-									<select id="personaNatural" class="form-control" 
-			                            ng-model="datosFormulario.personaNatural"
-			                            ng-options="option.nombre for option in listaPersonaNatural track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.personaNatural">{{errores.personaNatural}}</div>
-			                    </div>
-			                </div>				<div class="row">
-			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
-			                        <label>empresa</label>
-									<select id="empresa" class="form-control" 
-			                            ng-model="datosFormulario.empresa"
-			                            ng-options="option.nombre for option in listaEmpresa track by option.id">
-			                    	</select>
-			                        <div ng-show="errores.empresa">{{errores.empresa}}</div>
-			                    </div>
-			                </div>
-			<div class="btn-group">
-				<button type="button" class="btn btn-default" ng-click="guardar()" ng-show="nuevoRegistro">Guardar</button>
-                <button type="button" class="btn btn-default" ng-click="guardar()" ng-show="!nuevoRegistro">Aceptar</button>
-                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Buscar Instructor</div>
+            <div class="panel-body">
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label>tipoDocumento</label>
+                    <select id="tipoDocumento" class="form-control" 
+                            ng-model="consulta.tipoDocumento"
+                            ng-options="option.nombre for option in listaTipoDocumento track by option.id">
+                    </select>
+                    <div ng-show="errores.tipoDocumento">{{errores.tipoDocumento}}</div>
+                </div>
+                <div class="form-group col-md-6" ng-class="errores.idAseg ? 'error' : ''">
+                    <label for="numeroDocumento">numeroDocumento</label>
+                    <input id="numeroDocumento" 
+                           class="form-control" 
+                           type="text"
+                           ng-model="consulta.numeroDocumento"
+                           placeholder="numeroDocumento"/>
+                    <div ng-show="errores.numeroDocumento">{{errores.numeroDocumento}}</div>
+                </div>
+                <div class="btn-group">
+                    <button class="btn btn-primary">Consultar</button>
+                </div>
             </div>
-        </form>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Informaci&oacute;n del Instructor</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>tipoDocumento</label>
+                        <span class="form-control">{{consulta.tipoDocumento.nombre}}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="numeroDocumento">numeroDocumento</label>
+                        <span class="form-control">{{consulta.numeroDocumento}}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Primer Nombre: </label>
+                        <span class="form-control">{{instructor.primerNombre}}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Segundo Nombre: </label>
+                        <span class="form-control">{{instructor.primerNombre}}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Primer Apellido: </label>
+                        <span class="form-control">{{instructor.primerNombre}}</span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Segundo Apellido: </label>
+                        <span class="form-control">{{instructor.primerNombre}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Vinculaci&oacute;n del Instructor</div>
+            <div class="panel-body">
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#registroVinculacion">Agregar Vinculaci&oacuten</button>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="row in listaVinculacion">
+                        <td>{{row.fechaInicio}}</td>
+                        <td>{{row.fechaTerminacion}}</td>
+                        <td><button class="btn btn-primary">Eliminar</button></td>
+                    </tr>
+                </table>
+                <div id="registroVinculacion" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Registro Vinculaci&oacute;n</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="fechaInicio">Fecha Inicio</label>
+                                        <div class="input-group">
+                                            <input id="fechaInicio" 
+                                                   class="form-control datepicker" 
+                                                   type="text" 
+                                                   ng-model="datosFormulario.fecha"
+                                                   required="true"/>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <script>
+                                            var dp_fecha = $('#fechaInicio').datepicker({format: 'dd/mm/yyyy', languaje:'es'}).on('changeDate', function (ev) {
+                                                dp_fecha.hide();
+                                            }).data('datepicker');
+                                        </script>
+                                        <div ng-show="errores.fechaInicio">{{errores.fechaInicio}}</div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="fechaFin">Fecha Fin</label>
+                                        <div class="input-group">
+                                            <input id="fechaFin" 
+                                                   class="form-control datepicker" 
+                                                   type="text" 
+                                                   ng-model="datosFormulario.fechaFin"
+                                                   required="true"/>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <script>
+                                            var dp_fecha = $('#fechaFin').datepicker({format: 'dd/mm/yyyy',languaje:'es'}).on('changeDate', function (ev) {
+                                                dp_fecha.hide();
+                                            }).data('datepicker');
+                                        </script>
+                                        <div ng-show="errores.fechaFin">{{errores.fechaFin}}</div>
+                                    </div>
+                                </div>
+                                <div class="btn-group">
+                                    <button class="btn btn-primary">Guardar</button>
+                                    <button class="btn btn-primary" data-dismiss="modal">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">Informaci&oacute;n de la certificaci&oacute;n de formaci&oacute;n</div>
+            <div class="panel-body">
+                <div class="btn-group">
+                    <button class="btn btn-primary">Agregar Certificaci&oacute;n</button>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th>Tipo de certificaci&oacute;n</th>
+                        <th>N&ua&uacute;mero de Certificaci&oacute;n</th>
+                        <th>T&iacute;tulo</th>
+                        <th></th>
+                    </tr>
+                    <tr ng-repeat="row in listaTipoCertificacion">
+                        <td>{{row.tipoCertificacion.nombre}}</td>
+                        <td>{{row.numero}}</td>
+                        <td>{{row.titulo}}</td>
+                        <th><button class="btn btn-primary">Eliminar</button></th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default" ng-click="guardar()">Guardar</button>
+            <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+        </div>
     </div>
 </div>
-

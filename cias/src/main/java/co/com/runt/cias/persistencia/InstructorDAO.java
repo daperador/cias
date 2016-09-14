@@ -21,6 +21,15 @@ public class InstructorDAO {
     public List<Instructor> obtenerTodos() {
         return em.createNamedQuery("Instructor.obtenerTodos").getResultList();
     }
+    
+    /**
+     * Obtiene la lista de instructores por CIA
+     */
+    public List<Instructor> obtenerPorCIA(Long idCia) {
+        return em.createNamedQuery("Instructor.obtenerPorCIA")
+                .setParameter("cia", idCia)
+                .getResultList();
+    }
 
     /**
      * @generated
